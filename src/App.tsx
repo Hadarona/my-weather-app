@@ -1,20 +1,19 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import './App.css'
 import { fetchLocations, fetchCurrentWeather, fetchFiveDayForecast } from './api/accuWeather';
-import { ILocationsProps, iWeatherProps, iForecastProps } from './api/types';
+import { iCityProps, iWeatherProps, iForecastProps } from './api/types';
+
+import AsyncSelect from 'react-select/async';
+
 
 const App: React.FC = () => {
   const [query, setQuery] = useState('');
-  const [locations, setLocations] = useState<ILocationsProps[]>([]);
   const [weather, setWeather] = useState<iWeatherProps>();
   const [forecast, setForecast] = useState<iForecastProps>();
 
-  const handleSearch = async () => {
-    const locationData = await fetchLocations(query);
-    setLocations(locationData);
-  };
-
-  const handleGetWeather = async (locationKey: string) => {
+  const handleGetWeather = async (locationKey: string, cityName: string) => {
+    console.log("called function with", locationKey, cityName);
+    
     const weatherData = await fetchCurrentWeather(locationKey);
     setWeather(weatherData);
 
@@ -22,28 +21,29 @@ const App: React.FC = () => {
     setForecast(forecastData);
   };
 
+  const fetchAutoComplete = useCallback(async () => {
+    const results = await fetchLocations(query);
+    return results.map((obj) => ({
+      value: obj.Key,
+      label: obj.LocalizedName,
+    }));
+  }, [query])
+
   return (
     <div>
       <h1>Weather App</h1>
-      <input
-        type="text"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        placeholder="Enter city initials"
-      />
-      <button onClick={handleSearch}>Search</button>
 
-      <div>
-        <h2>Locations</h2>
-        <ul>
-          {locations.map((location: any) => (
-            <li key={location.Key}>
-              {location.LocalizedName}
-              <button onClick={() => handleGetWeather(location.Key)}>Get Weather</button>
-            </li>
-          ))}
-        </ul>
-      </div>
+      {/* <button onClick={handleSearch}>Search</button> */}
+
+      <AsyncSelect
+        value={query}
+        onInputChange={setQuery}
+        onChange={({ value, label}) => handleGetWeather(value, label)}
+        cacheOptions
+        defaultOptions={false}
+        placeholder="Enter city initials"
+        loadOptions={fetchAutoComplete}
+      />
 
       {weather && (
         <div>

@@ -1,4 +1,4 @@
-export interface ILocationsProps {
+export interface iLocationsProps {
     Version: number;
     Key: string;
     Type: string;
@@ -12,6 +12,11 @@ export interface ILocationsProps {
       ID: string;
       LocalizedName: string;
     };
+  }
+
+export interface iCityProps {
+    LocalizedName: string;
+    Key: string;
   }
   
   export interface iWeatherProps {

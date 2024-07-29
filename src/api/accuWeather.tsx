@@ -1,10 +1,10 @@
 import axios from 'axios';
 import config from './config';
-import {ILocationsProps, iWeatherProps, iForecastProps} from './types';
+import {iLocationsProps, iWeatherProps, iForecastProps} from './types';
 
 
 // Location Autocomplete
-export const fetchLocations = async (initials: string): Promise<ILocationsProps[]> => {
+export const fetchLocations = async (initials: string): Promise<iLocationsProps[]> => {
     const response = await axios.get(`${config.BASE_URL}/locations/v1/cities/autocomplete`, {
       params: {
         apikey: config.API_KEY,
