@@ -25,7 +25,7 @@ export const fetchCurrentWeather = async (locationKey: string): Promise<iWeather
       details: true
     },
   });
-  return response.data;
+  return response.data[0];
 };
 
 // 5-Day Weather Forecasts
