@@ -2,6 +2,7 @@ import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { fetchCurrentWeather, fetchFiveDayForecast } from '../api/accuWeather';
 import { iWeatherProps, iForecastProps } from '../api/types';
 
+
 export interface WeatherState { 
   query: string;
   weather?: iWeatherProps;
@@ -9,6 +10,7 @@ export interface WeatherState {
   loading: boolean;
   error?: string;
   selectedCity: {cityName: string, cityCode: string} | null;
+  weatherText: string;
 }
 
 const initialState: WeatherState = {
@@ -18,6 +20,7 @@ const initialState: WeatherState = {
   loading: false,
   error: undefined,
   selectedCity: null,
+  weatherText: '',
 };
 
 export const fetchWeather = createAsyncThunk(
@@ -41,9 +44,13 @@ export const weatherSlice = createSlice({
     setSelectedCity: (state, action) => {
       state.selectedCity = action.payload;
     },
+    setWeatherText: (state, action: PayloadAction<string>) => {
+      state.weatherText = action.payload;
+    },
     clearWeather: (state) => {
       state.weather = undefined;
       state.forecast = undefined;
+      state.weatherText = '';
     },
   },
   extraReducers: (builder) => {
@@ -63,5 +70,5 @@ export const weatherSlice = createSlice({
   },
 });
 
-export const { setQuery, clearWeather, setSelectedCity } = weatherSlice.actions;
+export const { setQuery, clearWeather, setSelectedCity, setWeatherText } = weatherSlice.actions;
 export default weatherSlice.reducer;

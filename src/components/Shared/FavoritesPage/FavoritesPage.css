@@ -1,0 +1,132 @@
+.favorites-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.favorites-view {
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+.favorites-list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center; 
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.favorite-card {
+  background-color: #F0F8FF;
+  padding: 20px;
+  width: 170%;
+  max-width: 400px;
+  display: inline-block;
+  height: fit-content;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  border: solid gray 1px;
+  border-radius: 3px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.texts {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 2px;
+  p {
+    margin: 0;
+  }
+}
+
+.degrees {
+  font-size: larger;
+  font-weight: bold;
+}
+
+.favorite-card  {
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+
+.favorite-card-content {
+  padding: 10px 0;
+}
+
+.weather-texts {
+  display: flex;
+  justify-content: left;
+  font-size: small;
+  color: rgb(87, 87, 87);
+}
+
+button {
+  background-color: transparent;
+  border: none;
+}
+
+.go-to {
+  color: #007bff;
+  margin-right: 90px;
+}
+
+.trash {
+  margin-left: 90px;
+}
+
+/* Devices: */
+/* For Tablets */
+@media (max-width: 768px) {
+  .favorites-container {
+      padding: 15px;
+  }
+
+  .favorites-view {
+      font-size: 1.8rem;
+  }
+
+  .favorite-card {
+      width: 90%;
+  }
+
+  .favorite-card h3 {
+      font-size: 1.4rem;
+  }
+}
+
+/* For Mobile */
+@media (max-width: 480px) {
+  .favorites-container {
+      padding: 10px;
+  }
+
+  .favorites-view {
+      font-size: 1.5rem;
+  }
+
+  .favorites-list {
+      gap: 15px;
+  }
+
+  .favorite-card {
+      width: 100%;
+      padding: 8px;
+  }
+
+  .favorite-card h3 {
+      font-size: 1.2rem;
+  }
+
+  .favorite-card-content {
+      padding: 8px 0;
+  }
+}
