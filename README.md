@@ -24,13 +24,13 @@ Welcome to **My Weather App**! 🌦️ This project is a simple yet powerful wea
 
 Here are some previews of the app in action:
 
-![Weather App Main Screen](github\main-page.png)
-![Changing Between Units](github\f-c-units.png)
-![My Location Forcast](github\my-location.png)
-![Favorites Page](github\favorites.png)
-![Mobile Main Screen](github\mobile-main.png)
-![Mobile Favorites Page](github\mobile-favorites.png)
-![Mobile Navigation](github\mobile-nav.png)
+![Weather App Main Screen](github/main-page.png)
+![Changing Between Units](github/f-c-units.png)
+![My Location Forcast](github/my-location.png)
+![Favorites Page](github/favorites.png)
+![Mobile Main Screen](github/mobile-main.png)
+![Mobile Favorites Page](github/mobile-favorites.png)
+![Mobile Navigation](github/mobile-nav.png)
 
 ## 🔧 Configuration
 
